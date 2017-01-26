@@ -23,15 +23,20 @@ class LinkedList {
         this._tail = item;
 
         this.length ++;
+        return this;
     }
 
-    head() {return this.isEmpty()?null:this._head.data;}
+    head() {
+        return this._head ?  this._head.data :null;
+    }
 
-    tail() {return this.isEmpty()?null:this._tail.data;}
+    tail() {
+        return this._tail ?  this._tail.data :null;
+    }
 
     at(index) {
         if(index > this.length || index < 0){
-           // throw "Invalid index";
+            throw "Invalid index";
         }
 
         let item = this._head;
@@ -47,7 +52,7 @@ class LinkedList {
 
     insertAt(index, data) {
         if(index < 0){
-           // throw "Invalid index";
+            throw "Invalid index";
         }
 
         if(this.isEmpty()){
@@ -69,7 +74,7 @@ class LinkedList {
         item.prev.next = node;
         item.prev = node;
 
-
+        return this;
     }
 
     isEmpty() { return this.length===0;}
@@ -78,12 +83,12 @@ class LinkedList {
         this.length = 0;
         this._head =  null;
         this._tail = null;
-
+        return this;
     }
 
     deleteAt(index) {
         if(index < 0){
-         //   throw "Invalid index";
+            throw "Invalid index";
         }
 
 
@@ -96,7 +101,7 @@ class LinkedList {
         }
         item.prev.next = item.next;
         item.next.prev = item.prev;
-
+        return this;
     }
 
     reverse() {
@@ -111,6 +116,7 @@ class LinkedList {
             node.next = temp;
             node = temp;
         }
+        return this;
     }
 
     indexOf(data) {
@@ -119,12 +125,16 @@ class LinkedList {
         let item = this._head;
         let i = 0;
 
-        while(item.data !==data){
+        do{
+            if(item.data === data){
+                return i;
+            }
             item = item.next;
             i++;
         }
+        while(item.next!==this._tail);
 
-        return i;
+        return -1;
     }
 }
 
