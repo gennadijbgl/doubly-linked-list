@@ -31,7 +31,7 @@ class LinkedList {
 
     at(index) {
         if(index > this.length || index < 0){
-            throw "Invalid index";
+           // throw "Invalid index";
         }
 
         let item = this._head;
@@ -47,7 +47,7 @@ class LinkedList {
 
     insertAt(index, data) {
         if(index < 0){
-            throw "Invalid index";
+           // throw "Invalid index";
         }
 
         if(this.isEmpty()){
@@ -83,7 +83,7 @@ class LinkedList {
 
     deleteAt(index) {
         if(index < 0){
-            throw "Invalid index";
+         //   throw "Invalid index";
         }
 
 
